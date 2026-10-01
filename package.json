@@ -1,0 +1,39 @@
+{
+  "name": "bangla-to-english-name-translator",
+  "version": "1.0.0",
+  "description": "Convert Bangla (Bengali) person names to English, e.g. \"শাহারিয়ার হৃদয়\" -> \"Shahariar Hridoy\". Phonetic rules plus a dictionary of real-world spellings learned from Wikidata. Zero dependencies.",
+  "main": "src/index.js",
+  "types": "index.d.ts",
+  "bin": {
+    "bangla-to-english-name-translator": "bin/cli.js"
+  },
+  "files": [
+    "src/",
+    "bin/",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "fetch:data": "node scripts/fetch-wikidata.js",
+    "build:dictionary": "node scripts/build-dictionary.js",
+    "evaluate": "node scripts/evaluate.js",
+    "start": "node bin/cli.js"
+  },
+  "keywords": [
+    "bangla",
+    "bengali",
+    "bangla-to-english",
+    "bengali-to-english",
+    "transliteration",
+    "romanization",
+    "name",
+    "names",
+    "translator",
+    "bangladesh"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14"
+  }
+}
