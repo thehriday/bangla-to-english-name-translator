@@ -48,5 +48,13 @@
   "license": "MIT",
   "engines": {
     "node": ">=14"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thehriday/bangla-to-english-name-translator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thehriday/bangla-to-english-name-translator/issues"
+  },
+  "homepage": "https://github.com/thehriday/bangla-to-english-name-translator#readme"
 }
