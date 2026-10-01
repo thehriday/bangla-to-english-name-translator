@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
+const SRC = process.env.SRC_DIR || path.join(__dirname, '..', 'src');
 const DATA_FILE = path.join(__dirname, '..', 'data', 'wikidata-names.json');
 
 // How much a spelling from each source counts. Bangladeshi and Bengali-Indian people are the
@@ -25,7 +26,9 @@ function loadPeople() {
     const bn = cleanLabel(r.bn).normalize('NFC');
     const en = cleanLabel(r.en);
     if (!BN_NAME.test(bn) || !EN_NAME.test(en)) continue;
-    const bnWords = bn.split(' ');
+    // Split compounds the same way the library does (প্রবোধচন্দ্র -> প্রবোধ চন্দ্র) so words line up.
+    const { splitCompound } = require(`${SRC}/translator`);
+    const bnWords = bn.split(' ').flatMap((w) => splitCompound(w) || [w]);
     const enWords = en.split(' ');
     if (bnWords.length !== enWords.length) continue;
     people.push({ ...r, bn, en, bnWords, enWords });
@@ -56,10 +59,31 @@ function similarity(a, b) {
   return 1 - d[x.length][y.length] / Math.max(x.length, y.length, 1);
 }
 
+// Everyday name words { bangla: { english: count } } (see fetch-everyday-names.js), or {} if not downloaded.
+// split: 'train' (the dataset's training file) or 'test' (its separate test file).
+function loadEveryday(split = 'train') {
+  const file = path.join(__dirname, '..', 'data', split === 'test' ? 'everyday-names-test.json' : 'everyday-names.json');
+  if (!fs.existsSync(file)) return {};
+  const raw = JSON.parse(fs.readFileSync(file, 'utf8'));
+  const { modernize } = require(`${SRC}/transliterate`);
+  const out = {};
+  for (const [bn, spellings] of Object.entries(raw)) {
+    const key = modernize(bn);
+    out[key] = out[key] || {};
+    for (const [en, c] of Object.entries(spellings)) out[key][en] = (out[key][en] || 0) + c;
+  }
+  return out;
+}
+
+// Stable 20% of distinct everyday words held out for evaluation.
+function isTestWord(bn) {
+  return crypto.createHash('md5').update(bn).digest()[0] % 5 === 0;
+}
+
 // Stable 20% test split, only among the target-audience sources.
 function isTestPerson(p) {
   if (!EVAL_SOURCES.has(p.source)) return false;
   return crypto.createHash('md5').update(p.id).digest()[0] % 5 === 0;
 }
 
-module.exports = { loadPeople, isTestPerson, looseKey, similarity, SOURCE_WEIGHT };
+module.exports = { loadPeople, loadEveryday, isTestPerson, isTestWord, looseKey, similarity, SOURCE_WEIGHT };

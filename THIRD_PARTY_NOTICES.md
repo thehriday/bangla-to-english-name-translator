@@ -1,6 +1,18 @@
-MIT License
+# Third-party notices
 
-Copyright (c) 2026 Shahariar Hriday
+`src/learned-dictionary.json` is derived from the following data.
+
+## Wikidata
+
+Person name labels from [Wikidata](https://www.wikidata.org/), available under
+[CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) (public domain dedication).
+
+## Transliteration-Model (everyday Bengali name words)
+
+Name word pairs from <https://github.com/p3jitnath/Transliteration-Model> (`data/` folder).
+
+```
+Copyright (c) 2019 Pritthijit Nath and Tommy Tracey
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +31,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```

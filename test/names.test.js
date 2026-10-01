@@ -44,7 +44,7 @@ const cases = {
     ['সৌরভ', 'Sourav'], ['প্রদীপ', 'Pradip'], ['সঞ্জয়', 'Sanjoy'], ['অর্ণব', 'Arnab'],
     ['কৃষ্ণ', 'Krishna'], ['শান্ত', 'Shanto'], ['অনন্ত', 'Ananto'], ['প্রান্ত', 'Pranto'],
     ['স্বপন', 'Swapan'], ['সত্যজিৎ', 'Satyajit'], ['রঞ্জিত', 'Ranjit'],
-    ['নির্মল', 'Nirmal'], ['উৎপল', 'Utpal'], ['অভিজিৎ', 'Avijit'], ['তমাল', 'Tamal'],
+    ['নির্মল', 'Nirmal'], ['উৎপল', 'Utpal'], ['অভিজিৎ', 'Ovijit'], ['তমাল', 'Tamal'],
     ['মঙ্গল', 'Mangal'], ['বিকাশ', 'Bikash'], ['প্রকাশ', 'Prakash'], ['নিলয়', 'Niloy'],
     ['গুপ্ত', 'Gupta'], ['বাপ্পী', 'Bappi'], ['শিশির', 'Shishir'],
   ],
@@ -109,7 +109,7 @@ const cases = {
     ['হায়দার', 'Haidar'], ['কায়সার', 'Kaisar'], ['রায়হান', 'Raihan'], ['সায়মা', 'Saima'], ['আউয়াল', 'Awal'],
     ['জয়নাল', 'Joynal'], ['নয়ন', 'Noyon'], ['আকবর', 'Akbar'], ['আজমল', 'Ajmal'], ['বরকত', 'Barkat'],
     ['অনামিকা', 'Anamika'], ['অপরাজিতা', 'Aparajita'], ['সৈকত', 'Saikat'], ['তৈমুর', 'Taimur'],
-    ['অমিতাভ', 'Amitav'], ['শম্ভু', 'Shambhu'], ['হক', 'Haque'], ['দত্ত', 'Dutta'], ['চ্যাটার্জী', 'Chatterjee'],
+    ['অমিতাভ', 'Omitav'], ['শম্ভু', 'Shambhu'], ['হক', 'Haque'], ['দত্ত', 'Dutta'], ['চ্যাটার্জী', 'Chatterjee'],
   ],
   'Titles and surnames': [
     ['এডভোকেট', 'Advocate'], ['ইঞ্জিনিয়ার', 'Engineer'], ['চৌধুরী', 'Chowdhury'],
@@ -123,13 +123,13 @@ const learnedCases = [
     ['পার্বতী', 'Parbati'], ['সজীব ওয়াজেদ', 'Sajib Wazed'], ['তন্ময় রায়', 'Tonmoy Roy'], ['ডাঃ অ্যানি রহমান', 'Dr. Annie Rahman'],
     ['কাজী নজরুল ইসলাম', 'Kazi Nazrul Islam'], ['মিজানুর', 'Mizanur'], ['শফিকুল', 'Shafiqul'], ['মোস্তাফিজুর', 'Mostafizur'],
     ['জসিম', 'Jashim'], ['নাজমুল', 'Nazmul'], ['শাহীন', 'Shaheen'], ['সুমন', 'Sumon'],
-    ['সাগর', 'Sagor'], ['মৌসুমী', 'Moushumi'], ['সঞ্জয়', 'Sanjay'], ['অনন্ত', 'Ananta'],
-    ['রঞ্জিত', 'Ranajit'], ['অভিজিৎ', 'Abhijit'], ['বাপ্পী', 'Bappy'], ['লক্ষ্মী', 'Laxmi'],
-    ['শঙ্কর', 'Sankar'], ['উজ্জ্বল', 'Uzzal'], ['মণ্ডল', 'Mondal'], ['প্রশান্ত', 'Prasanta'],
-    ['হেমন্ত', 'Hemanta'], ['বন্যা', 'Banna'], ['তন্ময়', 'Tonmoy'], ['সুদীপ্ত', 'Sudipto'],
-    ['ব্রজেন', 'Brojen'], ['মোল্লা', 'Mollah'], ['অর্ক', 'Arko'], ['কার্তিক', 'Kartick'],
-    ['সূর্য', 'Surjya'], ['শ্রাবন্তী', 'Srabanti'], ['শ্রী', 'Sri'], ['ব্রাহ্মণ', 'Brahmin'],
-    ['মনিরুজ্জামান', 'Moniruzzaman'], ['শ্যামলী', 'Shamoli'], ['মুহম্মদ জাফর ইকবাল', 'Muhammad Zafar Iqbal'], ['মোছাঃ শাহনাজ বেগম', 'Mst. Shahnaz Begum'],
+    ['সাগর', 'Sagor'], ['মৌসুমী', 'Moushumi'], ['সঞ্জয়', 'Sanjoy'], ['অনন্ত', 'Ananta'],
+    ['রঞ্জিত', 'Ranjit'], ['অভিজিৎ', 'Avijit'], ['বাপ্পী', 'Bappy'], ['লক্ষ্মী', 'Lakshmi'],
+    ['শঙ্কর', 'Shankar'], ['উজ্জ্বল', 'Uzzal'], ['মণ্ডল', 'Mondal'], ['প্রশান্ত', 'Prashanta'],
+    ['হেমন্ত', 'Hemanta'], ['বন্যা', 'Banya'], ['তন্ময়', 'Tonmoy'], ['সুদীপ্ত', 'Sudipto'],
+    ['ব্রজেন', 'Brojen'], ['মোল্লা', 'Mollah'], ['অর্ক', 'Arka'], ['কার্তিক', 'Kartik'],
+    ['সূর্য', 'Surya'], ['শ্রাবন্তী', 'Shrabanti'], ['শ্রী', 'Shri'], ['ব্রাহ্মণ', 'Brahmin'],
+    ['মনিরুজ্জামান', 'Moniruzzaman'], ['শ্যামলী', 'Shyamali'], ['মুহম্মদ জাফর ইকবাল', 'Muhammad Zafar Iqbal'], ['মোছাঃ শাহনাজ বেগম', 'Mst. Shahnaz Begum'],
     ['মোল্লা মাসুদ', 'Mollah Masud'], ['পাটোয়ারী', 'Patwary'], ['শওকত', 'Shawkat'], ['হাওলাদার', 'Howlader'],
     ['হায়দার', 'Haider'], ['কায়সার', 'Kaiser'], ['সায়মা', 'Sayema'], ['নয়ন', 'Nayan'],
     ['আজমল', 'Azmal'],
@@ -149,6 +149,46 @@ for (const [group, pairs] of Object.entries(cases)) {
 }
 
 test('Real-world spellings (default, with learned dictionary)', () => check(learnedCases));
+
+// Fixes found by testing on 2.6 million everyday name records and complex real names.
+const robustnessCases = [
+  // Punctuation, invisible joiners and mixed text around names
+  ['শুভ দাশ।', 'Shuvo Das.'], ['দাশ, শুভ', 'Das, Shuvo'], ['শুভ (দাশ)', 'Shuvo (Das)'], ['"শুভ দাশ"', '"Shuvo Das"'],
+  ['শুভ।দাশ', 'Shuvo. Das'], ['শাকি\u200Cল আহমেদ', 'Shakil Ahmed'], ['Md. শাকিল Ahmed', 'Md. Shakil Ahmed'],
+  ['উর-রহমান', 'Ur-Rahman'], ['মোঃ মোস্তাফিজুর রহমান (রনি)', 'Md. Mostafizur Rahman (Rony)'],
+  // মহঃ / এমডি abbreviations
+  ['মহঃ রফিক', 'Md. Rafiq'], ['মহ রফিক', 'Md. Rafiq'], ['এমডি রফিক', 'Md. Rafiq'], ['মহম্মদ', 'Mohammad'],
+  // Old spelling: doubled consonant after reph
+  ['মুখার্জ্জী', 'Mukherjee'], ['ব্যানার্জ্জী', 'Banerjee'], ['চ্যাটার্জ্জী', 'Chatterjee'], ['ভট্টাচার্য্য', 'Bhattacharya'],
+  // ঁ and ঞ
+  ['গরাঁই', 'Garai'], ['গঁরাই', 'Garai'], ['খাঁ', 'Khan'], ['চাঁদ', 'Chand'], ['ভুইঞা', 'Bhuiya'],
+  // Compound names English writes as two words
+  ['প্রবোধচন্দ্র বাগচী', 'Prabodh Chandra Bagchi'], ['জগদীশচন্দ্র বসু', 'Jagadish Chandra Basu'],
+  ['দিলীপকুমার রায়', 'Dilip Kumar Roy'], ['রবীন্দ্রনাথ ঠাকুর', 'Rabindranath Thakur'],
+  // Christian names
+  ['মাইকেল মধুসূদন দত্ত', 'Michael Madhusudan Dutta'], ['জন গোমেজ', 'John Gomes'],
+  // Typos in a single record must not be learned
+  ['মাশরাফি বিন মর্তুজা', 'Mashrafi Bin Martuja'],
+  // Complex full names
+  ['ডাঃ মোঃ শফিকুল ইসলাম চৌধুরী', 'Dr. Md. Shafiqul Islam Chowdhury'],
+  ['ইঞ্জিঃ এ.কে.এম. ফজলুল করিম', 'Engr. A.K.M. Fazlul Karim'],
+  ['আলহাজ্ব মোঃ আবুল কালাম আজাদ', 'Alhaj Md. Abul Kalam Azad'], ['শেখ মুজিবুর রহমান', 'Sheikh Mujibur Rahman'],
+  ['শ্রীমতি', 'Shrimati'], ['লক্ষী', 'Lakshmi'], ['মন্ডল', 'Mondal'],
+];
+
+test('Robustness and complex names', () => check(robustnessCases));
+
+// Bangladeshi spelling style is the default: i/u (not ee/oo), v/b (not bh/v), sh for শ, -oy endings,
+// and "o" for the inherent vowel where Bangladeshis write it (Ovi, Shanto, Moni, Robi, Sumon).
+const bangladeshiCases = [
+  ['মুহাম্মদ অভি', 'Muhammad Ovi'], ['অভি', 'Ovi'], ['নাজমুল হোসেন শান্ত', 'Nazmul Hossain Shanto'],
+  ['মণি', 'Moni'], ['মনি', 'Moni'], ['রবি', 'Robi'], ['সুজন', 'Sujon'], ['সুমন', 'Sumon'], ['সাগর', 'Sagor'],
+  ['সঞ্জয়', 'Sanjoy'], ['বিজয়', 'Bijoy'], ['অজয়', 'Ajoy'], ['বিবেক', 'Bibek'], ['বিপ্লব', 'Biplob'],
+  ['জিনাত', 'Zinat'], ['শিশির', 'Shishir'], ['পীর', 'Pir'], ['সায়েম', 'Sayem'], ['দীপক', 'Dipak'], ['সীমা', 'Sima'],
+  ['খাতুন', 'Khatun'], ['তাপস', 'Taposh'], ['হৃদয়', 'Hridoy'], ['জয়', 'Joy'], ['রনি', 'Rony'], ['প্রান্ত', 'Pranto'],
+];
+
+test('Bangladeshi spelling pattern (default)', () => check(bangladeshiCases));
 
 test('Custom dictionary wins over everything', () => {
   assert.strictEqual(banglaNameToEnglish('শাহারিয়ার হৃদয়', { dictionary: { 'হৃদয়': 'Hriday' } }), 'Shahariar Hriday');

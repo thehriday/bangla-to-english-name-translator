@@ -31,9 +31,14 @@ const HASANTA = '্';
 const NUKTA = '়';
 
 // Split a word into units: consonants (with optional nukta), vowels, signs, etc.
+// Old spelling doubles a consonant after reph (মুখার্জ্জী, ভট্টাচার্য্য, ধর্ম্ম); it sounds single.
+function modernize(text) {
+  return text.normalize('NFC').replace(/র্([\u0995-\u09B9])্\1/g, 'র্$1');
+}
+
 function tokenize(word) {
   // Normalize decomposed forms (ড + ় -> ড়) so lookups work consistently.
-  const chars = [...word.normalize('NFC')];
+  const chars = [...modernize(word)];
   const tokens = [];
   for (let i = 0; i < chars.length; i++) {
     if (chars[i + 1] === NUKTA) {
@@ -60,8 +65,8 @@ function dropsInherentVowel(tokens, i) {
   const next = tokens[i + 1];
   if (!isPlainConsonant(next)) return false;
   if (VOWEL_SIGNS[tokens[i + 2]] !== undefined) {
-    // …but not before the name endings -তী/-নী/-লী/-লা: স্বাগতা -> Swagata, শ্যামলী -> Shyamali.
-    const endsName = i + 3 === tokens.length && ['ী', 'া'].includes(tokens[i + 2]) && ['ত', 'ন', 'ণ', 'ল'].includes(next);
+    // …but not before the name endings -তী/-তি/-নী/-লী/-লা: স্বাগতা -> Swagata, শ্রীমতি -> Shrimati.
+    const endsName = i + 3 === tokens.length && ['ী', 'া', 'ি'].includes(tokens[i + 2]) && ['ত', 'ন', 'ণ', 'ল'].includes(next);
     return !endsName;
   }
   return isPlainConsonant(tokens[i + 2]) && i + 3 === tokens.length;
@@ -69,6 +74,9 @@ function dropsInherentVowel(tokens, i) {
 
 function transliterateWord(word) {
   const tokens = tokenize(word);
+  // Index of the last token that is not a trailing ং/ঃ/ঁ, computed once (keeps this linear).
+  let lastLetter = tokens.length - 1;
+  while (lastLetter > 0 && MODIFIERS[tokens[lastLetter]] !== undefined) lastLetter--;
   let out = '';
 
   for (let i = 0; i < tokens.length; i++) {
@@ -95,12 +103,17 @@ function transliterateWord(word) {
       i++;
     } else if (t === 'ই' && i === 0 && (next === 'উ' || next === 'ঊ')) {
       out += 'y'; // ইউ at the start -> yu (ইউনূস -> Yunus, ইউসুফ -> Yusuf)
+    } else if (t === 'অ' && i === 0 && CONSONANTS[next] !== undefined && ['ি', 'ী', 'ু', 'ূ'].includes(tokens[i + 2])) {
+      out += 'o'; // Bangladeshi spelling of a leading অ before i/u: অভি -> Ovi, অপু -> Opu, অনিক -> Onik
     } else if (INDEPENDENT_VOWELS[t] !== undefined) {
       out += INDEPENDENT_VOWELS[t];
     } else if (VOWEL_SIGNS[t] !== undefined) {
       out += VOWEL_SIGNS[t];
     } else if (t === 'ং' && VELARS.has(next)) {
       out += 'n'; // প্রিয়াংকা -> Priyanka, not Priyangka
+    } else if (t === 'ঁ' && ((next !== undefined && CONSONANTS[next] === undefined) || CONSONANTS[prev] !== undefined)) {
+      // ঁ is "n" after a vowel before a consonant or at the end (চাঁদ -> Chand, খাঁ -> Khan),
+      // silent before a vowel or right after a consonant (গরাঁই, গঁরাই -> Garai).
     } else if (MODIFIERS[t] !== undefined) {
       out += MODIFIERS[t];
     } else if (t === HASANTA) {
@@ -123,6 +136,8 @@ function transliterateWord(word) {
       } else if (t === 'জ' && next === HASANTA && tokens[i + 2] === 'ঞ') {
         out += 'gy'; // জ্ঞ -> gy (জ্ঞানেন্দ্র -> Gyanendra, প্রজ্ঞা -> Pragya)
         i += 2;
+      } else if (t === 'ঞ' && prev !== HASANTA && next !== HASANTA && i > 0) {
+        out += 'y'; // ঞ between vowels sounds "y": ভুইঞা -> Bhuiya, মিঞা -> Miya
       } else if (t === 'ভ' && (i === 0 || prev === HASANTA)) {
         out += 'bh'; // ভাস্কর -> Bhaskar, শম্ভু -> Shambhu; elsewhere "v" (তানভীর -> Tanvir)
       } else {
@@ -144,8 +159,7 @@ function transliterateWord(word) {
       // সালাহউদ্দিন -> Salahuddin, আমানউল্লাহ -> Amanullah (not Salahauddin).
       if (i > 0 && INDEPENDENT_VOWELS[next] !== undefined) continue;
 
-      const isLast = i === tokens.length - 1 ||
-        tokens.slice(i + 1).every((x) => MODIFIERS[x] !== undefined);
+      const isLast = i >= lastLetter;
       if (isLast) {
         if (prev === HASANTA && tokens[i - 2] === 'ন' && t === 'ত') {
           out += 'o'; // -ন্ত names end in "-nto": শান্ত -> Shanto, অনন্ত -> Ananto
@@ -173,4 +187,4 @@ function transliterateWord(word) {
   return out;
 }
 
-module.exports = { transliterateWord, tokenize };
+module.exports = { transliterateWord, tokenize, modernize };

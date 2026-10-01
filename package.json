@@ -1,20 +1,29 @@
 {
   "name": "bangla-to-english-name-translator",
   "version": "1.0.0",
-  "description": "Convert Bangla (Bengali) person names to English, e.g. \"শাহারিয়ার হৃদয়\" -> \"Shahariar Hridoy\". Phonetic rules plus a dictionary of real-world spellings learned from Wikidata. Zero dependencies.",
+  "description": "Convert Bangla (Bengali) person names to English, e.g. \"শাহারিয়ার হৃদয়\" -> \"Shahariar Hridoy\". Phonetic rules plus a dictionary of real-world spellings learned from 2.7 million name records. Zero dependencies.",
   "main": "src/index.js",
   "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./src/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
   "bin": {
     "bangla-to-english-name-translator": "bin/cli.js"
   },
   "files": [
     "src/",
     "bin/",
-    "index.d.ts"
+    "index.d.ts",
+    "THIRD_PARTY_NOTICES.md"
   ],
   "scripts": {
     "test": "node --test",
-    "fetch:data": "node scripts/fetch-wikidata.js",
+    "fetch:data": "node scripts/fetch-wikidata.js && node scripts/fetch-everyday-names.js",
     "build:dictionary": "node scripts/build-dictionary.js",
     "evaluate": "node scripts/evaluate.js",
     "start": "node bin/cli.js"
@@ -29,9 +38,13 @@
     "name",
     "names",
     "translator",
-    "bangladesh"
+    "bangladesh",
+    "typescript",
+    "bd",
+    "nid",
+    "romanize"
   ],
-  "author": "",
+  "author": "Shahariar Hriday",
   "license": "MIT",
   "engines": {
     "node": ">=14"
