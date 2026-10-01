@@ -1,6 +1,6 @@
 {
   "name": "bangla-to-english-name-translator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Convert Bangla (Bengali) person names to English, e.g. \"শাহারিয়ার হৃদয়\" -> \"Shahariar Hridoy\". Phonetic rules plus a dictionary of real-world spellings learned from 2.7 million name records. Zero dependencies.",
   "main": "src/index.js",
   "types": "index.d.ts",
